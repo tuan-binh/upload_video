@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		video {
+          width: 300px;
+          height: 200px;
+		}
+	</style>
+</head>
+<body>
+<table border="10" cellpadding="10" cellspacing="10">
+	<thead>
+	<tr>
+		<th>STT</th>
+		<th>NAME</th>
+		<th>VIDEO</th>
+		<th>ACTIONS</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr th:each="v:${videos}">
+       <td th:text="${v.id}"></td>
+       <td th:text="${v.name}"></td>
+       <td>
+           <video th:src="@{|/video/${v.url}|}" autoplay controls></video>
+       </td>
+       <td><a th:href="@{/delete/{id}(id=${v.id})}">DELETE</a></td>
+   </tr>
+	</tbody>
+</table>
+</body>
+</html>
